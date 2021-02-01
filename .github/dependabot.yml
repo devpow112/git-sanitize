@@ -1,0 +1,29 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: daily
+    rebase-strategy: auto
+    labels:
+      - auto
+      - dependencies
+    reviewers:
+      - devpow112
+    commit-message:
+      prefix: build
+      include: scope
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: daily
+    versioning-strategy: increase
+    rebase-strategy: auto
+    labels:
+      - auto
+      - dependencies
+    reviewers:
+      - devpow112
+    commit-message:
+      prefix: chore
+      include: scope
