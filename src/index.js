@@ -8,7 +8,7 @@ if (commandExistsSync('git')) {
     executeGit(['clean', '-xfdf']);
     executeGit(submoduleForEach.concat(['git', 'clean', '-xfdf']));
     executeGit(['reset', '--hard']);
-    executeGit(submoduleForEach.concat(['git', 'reset', '-hard']));
+    executeGit(submoduleForEach.concat(['git', 'reset', '--hard']));
     executeGit(['submodule', 'update', '--recursive', '--init']);
   } catch (err) {
     console.error(err.message);
