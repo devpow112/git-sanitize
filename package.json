@@ -53,6 +53,6 @@
     "eslint": "^7.21.0",
     "eslint-plugin-import": "^2.22.1",
     "markdownlint-cli": "^0.27.1",
-    "semantic-release": "^17.4.1"
+    "semantic-release": "^17.4.2"
   }
 }
