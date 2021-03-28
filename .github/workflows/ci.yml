@@ -1,26 +1,19 @@
 name: CI
 on:
-  schedule:
-    - cron: '0 15 * * *'
   pull_request:
   push:
     branches:
       - main
 jobs:
-  build:
-    name: Build
-    if: >
-      !startsWith(github.event.head_commit.message, 'chore(release):') && !(
-        github.event_name == 'push' &&
-        startsWith(github.event.head_commit.message, 'chore(license):')
-      )
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.4
         with:
           fetch-depth: 0
-          persist-credentials: false
       - name: Get node version
         id: node
         run: echo "::set-output name=version::$(cat .nvmrc)"
@@ -37,25 +30,34 @@ jobs:
       - name: Install packages
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
-      - name: Run lint (javascript)
+      - name: Run lint (JavaScript)
         run: npm run lint:js
-      - name: Run lint (markdown)
+      - name: Run lint (Markdown)
         run: npm run lint:md
-      - name: Run lint (git)
+      - name: Run lint (Git)
         run: npm run lint:git
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+      - name: Get node version
+        id: node
+        run: echo "::set-output name=version::$(cat .nvmrc)"
+      - name: Set up node
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: ${{steps.node.outputs.version}}
+      - name: Set up cache
+        uses: actions/cache@v2.1.4
+        id: cache
+        with:
+          path: '**/node_modules'
+          key: npm-${{hashFiles('**/package-lock.json')}}
+      - name: Install packages
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
       - name: Run build
         run: npm run build
-      - name: Release
-        if: >
-          github.ref == 'refs/heads/main' && (
-            github.event_name == 'schedule' || (
-              github.event_name == 'push' && (
-                startsWith(github.event.head_commit.message, 'fix') ||
-                startsWith(github.event.head_commit.message, 'Revert')
-              )
-            )
-          )
-        run: npx semantic-release
-        env:
-          GITHUB_TOKEN: ${{secrets.SEMANTIC_RELEASE_TOKEN}}
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
