@@ -68,11 +68,13 @@ npm run format
 ```
 
 <!-- links -->
-[License Badge]: https://img.shields.io/github/license/devpow112/git-sanitize
+[License Badge]: https://img.shields.io/github/license/devpow112/git-sanitize?label=License
 [Version Badge]: https://img.shields.io/npm/v/git-sanitize
 [Version Package]: https://www.npmjs.com/git-sanitize
 [Node Version Badge]: https://img.shields.io/node/v/git-sanitize
-[CI Badge]: https://github.com/devpow112/git-sanitize/workflows/build/badge.svg?branch=main
-[CI Workflow]: https://github.com/devpow112/git-sanitize/actions?query=workflow%3Abuild+branch%3Amain
-[Vulnerabilities Badge]: https://snyk.io/test/github/devpow112/git-sanitize/badge.svg
+[CI Badge]: https://github.com/devpow112/git-sanitize/actions/workflows/ci.yml/badge.svg?branch=main
+[CI Workflow]: https://github.com/devpow112/git-sanitize/actions/workflows/ci.yml?query=branch%3Amain
+[Coverage Badge]: https://img.shields.io/coveralls/github/devpow112/git-sanitize/main?label=Coverage
+[Coverage Report]: https://coveralls.io/github/devpow112/git-sanitize?branch=main
+[Vulnerabilities Badge]: https://img.shields.io/snyk/vulnerabilities/github/devpow112/git-sanitize?label=Vulnerabilities
 [Vulnerabilities Report]: https://snyk.io/test/github/devpow112/git-sanitize
