@@ -35,7 +35,7 @@ git sanitize
 
 Development can be done on any machine that can install **Node.js**.
 
-### Building
+### Install Dependencies
 
 Install dependencies via `npm`.
 
@@ -43,29 +43,45 @@ Install dependencies via `npm`.
 npm i
 ```
 
-Run a build via `npm`:
+### Linting
+
+Execute linters via `npm`.
 
 ```bash
-npm run build
+# git, javascript and markdown
+npm run lint
+
+# git only
+npm run lint:git
+
+# javascript only
+npm run lint:js
+
+# markdown only
+npm run lint:md
 ```
-
-### Testing
-
-Execute tests via `npm`.
-
-```bash
-npm test
-```
-
-This will run lint and unit tests. You will also be presented a basic coverage
-report after test execution.
 
 ### Formatting
 
-Execute formatter via `npm`.
+Execute formatters via `npm`.
 
 ```bash
+# javascript and markdown
 npm run format
+
+# javascript only
+npm run format:js
+
+# markdown only
+npm run format:md
+```
+
+### Building
+
+Run a build via `npm`.
+
+```bash
+npm run build
 ```
 
 <!-- links -->
