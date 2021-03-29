@@ -1,7 +1,7 @@
 import { sync as commandExistsSync } from 'command-exists';
 import { executeGit } from './execute-git';
 
-if (commandExistsSync('git')) {
+if (!commandExistsSync('git')) {
   console.error('git is not available');
   process.exit(2);
 }
