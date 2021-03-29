@@ -7,15 +7,15 @@
     "git-sanitize": "./bin/git-sanitize"
   },
   "scripts": {
-    "build": "babel --out-dir dist src",
-    "lint": "npm run -s lint:git && npm run -s lint:js && npm run -s lint:md",
+    "build": "babel --verbose --out-dir dist src",
+    "lint": "run-s -s lint:git lint:js lint:md",
     "lint:js": "eslint .",
     "lint:md": "markdownlint .",
     "lint:git": "commitlint --from origin/main --to HEAD",
-    "format": "npm run -s format:js && npm run -s format:md",
-    "format:js": "npm run lint:js -s -- --fix",
-    "format:md": "npm run lint:md -s -- --fix",
-    "test": "npm run lint -s"
+    "format": "run-s -s format:js format:md",
+    "format:js": "npm run -s lint:js -- --fix",
+    "format:md": "npm run -s lint:md -- --fix",
+    "test": "npm run -s lint"
   },
   "repository": {
     "type": "git",
@@ -51,8 +51,8 @@
     "@semantic-release/git": "^9.0.0",
     "conventional-changelog-conventionalcommits": "^4.5.0",
     "eslint": "^7.23.0",
-    "eslint-plugin-import": "^2.22.1",
     "markdownlint-cli": "^0.27.1",
+    "npm-run-all": "^4.1.5",
     "semantic-release": "^17.4.2"
   }
 }
