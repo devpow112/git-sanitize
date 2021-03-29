@@ -1,11 +1,11 @@
 # Git Sanitize
 
 [![License][License Badge]](LICENSE)
+[![Version][Version Badge]][Version Package]
 [![CI][CI Badge]][CI Workflow]
 [![Release][Release Badge]][Release Workflow]
 [![Vulnerabilities][Vulnerabilities Badge]][Vulnerabilities Report]
-[![Node Version][Node Version Badge]](package.json#L41)
-[![Version][Version Badge]][Version Package]
+[![Node Version][Node Version Badge]](package.json#L39)
 
 Git custom command that will do a full "sanitize" of a branch. This will reset
 the branch and all submodules to be back to the branches `HEAD` state by
@@ -70,7 +70,7 @@ npm run format
 
 <!-- links -->
 [License Badge]: https://img.shields.io/github/license/devpow112/git-sanitize?label=License
-[Version Badge]: https://img.shields.io/npm/v/git-sanitize
+[Version Badge]: https://img.shields.io/npm/v/git-sanitize?label=Version
 [Version Package]: https://www.npmjs.com/git-sanitize
 [Node Version Badge]: https://img.shields.io/node/v/git-sanitize
 [CI Badge]: https://github.com/devpow112/git-sanitize/actions/workflows/ci.yml/badge.svg?branch=main
