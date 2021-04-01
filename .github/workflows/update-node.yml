@@ -20,15 +20,14 @@ jobs:
       - name: Determine node version
         id: node
         run: |
-          VERSION=$(curl -sSL https://resolve-node.vercel.app/lts)
+          VERSION=$(curl -sSf https://resolve-node.vercel.app/lts)
           VERSION=${VERSION#"v"}
           echo "::set-output name=version::$VERSION"
       - name: Update .nvmrc
         run: echo ${{steps.node.outputs.version}} > .nvmrc
       - name: Check for changes
         id: changes
-        run: |
-          git diff --exit-code .nvmrc || echo "::set-output name=exist::true"
+        run: git diff --exit-code .nvmrc || echo '::set-output name=exist::true'
       - name: Push commit
         if: steps.changes.outputs.exist
         run: |
