@@ -1,6 +1,6 @@
 {
   "name": "git-sanitize",
-  "version": "1.0.39",
+  "version": "1.0.40",
   "description": "Git custom command that will do a full \"sanitize\" of a branch",
   "main": "dist/index.js",
   "bin": {
