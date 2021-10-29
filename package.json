@@ -4,7 +4,7 @@
   "description": "Git custom command that will do a full \"sanitize\" of a branch",
   "main": "dist/index.js",
   "bin": {
-    "git-sanitize": "./bin/git-sanitize"
+    "git-sanitize": "./bin/cli.js"
   },
   "scripts": {
     "build": "babel --verbose --out-dir dist src",
