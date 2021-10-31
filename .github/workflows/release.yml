@@ -4,8 +4,8 @@ on:
     - cron: '0 19 * * *'
   workflow_run:
     workflows: CI
-    branches: main
     types: completed
+    branches: main
 permissions:
   contents: read
 concurrency: release
@@ -47,5 +47,5 @@ jobs:
       - name: Release
         run: npx semantic-release
         env:
-          GITHUB_TOKEN: ${{secrets.SEMANTIC_RELEASE_TOKEN}}
+          GITHUB_TOKEN: ${{secrets.PERSONAL_GITHUB_TOKEN}}
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}
