@@ -4,10 +4,10 @@
   "description": "Git custom command that will do a full \"sanitize\" of a branch",
   "main": "dist/index.js",
   "bin": {
-    "git-sanitize": "./bin/cli.js"
+    "git-sanitize": "./dist/cli.js"
   },
   "scripts": {
-    "build": "babel --verbose --out-dir dist src",
+    "build": "babel --verbose --out-dir dist src bin",
     "lint": "run-s -s lint:git lint:js lint:md",
     "lint:js": "eslint .",
     "lint:md": "markdownlint .",
@@ -32,11 +32,10 @@
   },
   "homepage": "https://github.com/devpow112/git-sanitize#readme",
   "files": [
-    "bin/*",
     "dist/**/*.js"
   ],
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "dependencies": {
     "command-exists": "^1.2.9"
