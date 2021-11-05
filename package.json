@@ -7,7 +7,7 @@
     "git-sanitize": "./dist/cli.js"
   },
   "scripts": {
-    "build": "babel --verbose --out-dir dist src bin",
+    "build": "rimraf dist/ && babel --verbose --out-dir dist src bin",
     "lint": "run-s -s lint:git lint:js lint:md",
     "lint:js": "eslint .",
     "lint:md": "markdownlint .",
@@ -52,6 +52,7 @@
     "eslint": "^8.1.0",
     "markdownlint-cli": "^0.29.0",
     "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
     "semantic-release": "^18.0.0"
   }
 }
