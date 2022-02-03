@@ -2,6 +2,7 @@
   "name": "git-sanitize",
   "version": "1.0.44",
   "description": "Git custom command that will do a full \"sanitize\" of a branch",
+  "preferGlobal": true,
   "bin": {
     "git-sanitize": "./bin/git-sanitize"
   },
