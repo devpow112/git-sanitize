@@ -11,7 +11,7 @@ Git custom command that will do a full "sanitize" of a branch. This will reset
 the branch and all submodules to be back to the branches `HEAD` state by
 basically running the following.
 
-```bash
+```sh
 git clean -xfdf
 git submodule foreach --recursive git clean -xfdf
 git reset --hard
@@ -21,13 +21,13 @@ git submodule update --init --recursive
 
 ## Installation
 
-```bash
+```sh
 npm i -g git-sanitize
 ```
 
 ## Usage
 
-```bash
+```sh
 git sanitize
 ```
 
@@ -39,7 +39,7 @@ Development can be done on any machine that can install **Node.js**.
 
 Install dependencies via `npm`.
 
-```bash
+```sh
 npm i
 ```
 
@@ -47,7 +47,7 @@ npm i
 
 Execute linters via `npm`.
 
-```bash
+```sh
 # git, javascript and markdown
 npm run lint
 
@@ -65,7 +65,7 @@ npm run lint:md
 
 Execute formatters via `npm`.
 
-```bash
+```sh
 # javascript and markdown
 npm run format
 
@@ -80,7 +80,7 @@ npm run format:md
 
 Run a build via `npm`.
 
-```bash
+```sh
 npm run build
 ```
 
