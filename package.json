@@ -2,20 +2,19 @@
   "name": "git-sanitize",
   "version": "1.0.43",
   "description": "Git custom command that will do a full \"sanitize\" of a branch",
-  "main": "dist/index.js",
   "bin": {
-    "git-sanitize": "./dist/cli.js"
+    "git-sanitize": "./bin/git-sanitize"
   },
   "scripts": {
-    "build": "rimraf dist/ && babel --verbose --out-dir dist src bin",
+    "prebuild": "rimraf dist/",
+    "build": "babel --verbose --out-dir dist src bin",
     "lint": "run-s -s lint:git lint:js lint:md",
     "lint:js": "eslint .",
     "lint:md": "markdownlint .",
     "lint:git": "commitlint --from origin/main --to HEAD",
     "format": "run-s -s format:js format:md",
     "format:js": "npm run -s lint:js -- --fix",
-    "format:md": "npm run -s lint:md -- --fix",
-    "test": "npm run -s lint"
+    "format:md": "npm run -s lint:md -- --fix"
   },
   "repository": {
     "type": "git",
@@ -32,6 +31,7 @@
   },
   "homepage": "https://github.com/devpow112/git-sanitize#readme",
   "files": [
+    "bin/**/*",
     "dist/**/*.js"
   ],
   "engines": {
@@ -42,13 +42,12 @@
     "command-exists": "^1.2.9"
   },
   "devDependencies": {
-    "@babel/cli": "^7.16.8",
-    "@babel/core": "^7.16.12",
+    "@babel/cli": "^7.17.0",
     "@babel/preset-env": "^7.16.11",
-    "@babel/register": "^7.16.9",
+    "@babel/register": "^7.17.0",
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
-    "@devpow112/eslint-config": "^1.0.4",
+    "@devpow112/eslint-config": "^1.1.0",
     "@semantic-release/git": "^10.0.1",
     "conventional-changelog-conventionalcommits": "^4.6.3",
     "eslint": "^8.8.0",
