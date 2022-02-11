@@ -4,11 +4,11 @@
   "description": "Git custom command that will do a full \"sanitize\" of a branch",
   "preferGlobal": true,
   "bin": {
-    "git-sanitize": "./bin/git-sanitize"
+    "git-sanitize": "./dist/cli.js"
   },
   "scripts": {
     "prebuild": "rimraf dist/",
-    "build": "babel --verbose --out-dir dist src bin",
+    "build": "babel --verbose --out-dir dist src",
     "lint": "run-s -s lint:git lint:js lint:md",
     "lint:js": "eslint .",
     "lint:md": "markdownlint .",
@@ -32,7 +32,6 @@
   },
   "homepage": "https://github.com/devpow112/git-sanitize#readme",
   "files": [
-    "bin/**/*",
     "dist/**/*.js"
   ],
   "engines": {
