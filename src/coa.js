@@ -1,40 +1,84 @@
-import { sync as commandExistsSync } from 'command-exists';
-import { spawnSync } from 'child_process';
+import simpleGit, { ResetMode } from 'simple-git';
+import isString from 'lodash.isstring';
+import { unlink } from 'fs/promises';
 
-const executeGit = args => {
-  const result = spawnSync('git', args);
+const options = {
+  baseDir: process.cwd(),
+  binary: 'git',
+  maxConcurrentProcesses: 1
+};
 
-  if (result.error) {
-    throw new Error(
-      `Failed executing 'git ${args.join(' ')}, with error: ${result.error}`
-    );
-  } else if (result.signal !== null) {
-    throw new Error(
-      `Failed executing 'git ${args.join(' ')}, with signal: ${result.signal}`
-    );
-  } else if (result.status !== 0) {
-    throw new Error(
-      `Failed executing 'git ${args.join(' ')}, with code: ${result.status}`
-    );
+const getCompleteFileList = async git => {
+  const status = await git.status(['--ignored']);
+
+  return [
+    ...status.files,
+    ...(status.ignored ? status.ignored : [])
+  ];
+};
+
+const shouldClean = async git => {
+  return (await getCompleteFileList(git)).length !== 0;
+};
+
+const forceClean = async git => {
+  try {
+    await git.clean('xdf');
+  } catch (_) {
+    // handles cases on windows where path can be too long to clean
+    const files = await getCompleteFileList(git);
+
+    for (const file of files) {
+      await unlink(file);
+    }
+  } finally {
+    await git.clean('xdf');
   }
 };
 
-export const execute = () => {
-  if (!commandExistsSync('git')) {
-    console.error('git is not available');
-    process.exit(2);
+const hasSubmodules = async git => {
+  const result = await git.subModule('status');
+
+  return isString(result) && result.trim() !== '';
+};
+
+const submoduleForEach = async (git, args) => {
+  await git.subModule(['foreach', '--recursive', 'git', ...args]);
+};
+
+export const execute = async () => {
+  const git = simpleGit(options);
+
+  await git.checkIsRepo();
+
+  if (!(await shouldClean(git))) {
+    console.log('Already sanitized.');
+
+    return;
   }
 
-  const submoduleForEach = ['submodule', 'foreach', '--recursive'];
+  console.log('Cleaning...');
 
-  try {
-    executeGit(['clean', '-xfdf']);
-    executeGit(submoduleForEach.concat(['git', 'clean', '-xfdf']));
-    executeGit(['reset', '--hard']);
-    executeGit(submoduleForEach.concat(['git', 'reset', '--hard']));
-    executeGit(['submodule', 'update', '--recursive', '--init']);
-  } catch (err) {
-    console.error(err.message);
-    process.exit(1);
+  await forceClean(git);
+
+  const runSubmoduleCommands = await hasSubmodules(git);
+
+  if (runSubmoduleCommands) {
+    console.log('Cleaning submodules...');
+
+    await submoduleForEach(git, ['clean', '-xfdf']);
   }
+
+  console.log('Resetting...');
+
+  await git.reset(ResetMode.HARD);
+
+  if (runSubmoduleCommands) {
+    console.log('Resetting submodules...');
+
+    await submoduleForEach(git, ['reset', '--hard']);
+    await git.subModuleUpdate(['--recursive', '--init']);
+  }
+
+  console.log('Sanitized.');
 };

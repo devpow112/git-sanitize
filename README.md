@@ -8,7 +8,7 @@
 
 Git custom command that will do a full "sanitize" of a branch. This will reset
 the branch and all submodules to be back to the branches `HEAD` state by
-basically running the following.
+effectively running the following.
 
 ```console
 git clean -xfdf

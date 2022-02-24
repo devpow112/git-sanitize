@@ -2,4 +2,4 @@
 
 import { execute } from './coa.js';
 
-execute();
+execute().catch(() => process.exit(1));

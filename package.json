@@ -39,7 +39,8 @@
     "npm": ">=6.14.15"
   },
   "dependencies": {
-    "command-exists": "^1.2.9"
+    "lodash.isstring": "^4.0.1",
+    "simple-git": "^3.2.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
