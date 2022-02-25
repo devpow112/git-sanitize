@@ -35,7 +35,7 @@ const forceClean = async git => {
       await unlink(file);
     }
   } finally {
-    await git.clean('xdf');
+    await git.clean('xfdf');
   }
 };
 
