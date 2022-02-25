@@ -1,12 +1,15 @@
 import simpleGit, { ResetMode } from 'simple-git';
 import isString from 'lodash.isstring';
-import { unlink } from 'fs/promises';
+import { promisify } from 'util';
+import { unlink as unlinkCallback } from 'fs';
 
 const options = {
   baseDir: process.cwd(),
   binary: 'git',
   maxConcurrentProcesses: 1
 };
+
+const unlink = promisify(unlinkCallback);
 
 const getCompleteFileList = async git => {
   const status = await git.status(['--ignored']);
