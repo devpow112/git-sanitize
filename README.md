@@ -4,7 +4,7 @@
 [![Version][Version Badge]][Version Package]
 [![Release][Release Badge]][Release Workflow]
 [![Vulnerabilities][Vulnerabilities Badge]][Vulnerabilities Report]
-[![Node Version][Node Version Badge]](package.json#L38)
+[![Node Version][Node Version Badge]](package.json#L38-L39)
 
 Git custom command that will do a full "sanitize" of a branch. This will reset
 the branch and all submodules to be back to the branches `HEAD` state by
