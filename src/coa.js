@@ -1,4 +1,4 @@
-import simpleGit, { ResetMode } from 'simple-git';
+import { ResetMode, simpleGit } from 'simple-git';
 import isString from 'lodash.isstring';
 import { promisify } from 'util';
 import { unlink as unlinkCallback } from 'fs';
