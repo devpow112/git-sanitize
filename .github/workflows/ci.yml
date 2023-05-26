@@ -59,3 +59,5 @@ jobs:
           config-file: .github/codeql.yml
       - name: Run analysis
         uses: github/codeql-action/analyze@v2.3.5
+        with:
+          check_name: Test
