@@ -1,6 +1,6 @@
 {
   "name": "git-sanitize",
-  "version": "1.0.80",
+  "version": "1.0.81",
   "description": "Git custom command that will do a full \"sanitize\" of a branch",
   "preferGlobal": true,
   "bin": {
@@ -40,11 +40,11 @@
   },
   "dependencies": {
     "lodash.isstring": "^4.0.1",
-    "simple-git": "^3.21.0"
+    "simple-git": "^3.22.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.4",
-    "@babel/register": "^7.22.15",
+    "@babel/register": "^7.23.7",
     "@commitlint/cli": "^17.8.1",
     "@devpow112/babel-config": "^1.2.1",
     "@devpow112/commitlint-config": "^2.0.0",
