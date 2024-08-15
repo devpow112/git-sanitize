@@ -53,9 +53,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.7
       - name: Set up CodeQL
-        uses: github/codeql-action/init@v3.25.15
+        uses: github/codeql-action/init@v3.26.2
         with:
           languages: javascript
           config-file: .github/codeql.yml
       - name: Run analysis
-        uses: github/codeql-action/analyze@v3.25.15
+        uses: github/codeql-action/analyze@v3.26.2
