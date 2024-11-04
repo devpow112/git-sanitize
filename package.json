@@ -43,8 +43,8 @@
     "simple-git": "^3.25.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.24.8",
-    "@babel/register": "^7.24.6",
+    "@babel/cli": "^7.25.9",
+    "@babel/register": "^7.25.9",
     "@commitlint/cli": "^17.8.1",
     "@devpow112/babel-config": "^1.2.2",
     "@devpow112/commitlint-config": "^2.0.0",
