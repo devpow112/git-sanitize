@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "lodash.isstring": "^4.0.1",
-    "simple-git": "^3.25.0"
+    "simple-git": "^3.27.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.25.9",
