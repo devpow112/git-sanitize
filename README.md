@@ -3,7 +3,7 @@
 [![License][License Badge]](LICENSE)
 [![Version][Version Badge]][Version Package]
 [![Release][Release Badge]][Release Workflow]
-[![Node Version][Node Version Badge]](package.json#L38-L39)
+[![Node Version][Node Version Badge]](package.json#L61-L62)
 
 Git custom command that will do a full "sanitize" of a branch. This will reset
 the branch and all submodules to be back to the branches `HEAD` state by
@@ -46,7 +46,7 @@ npm i
 Execute linters via `npm`.
 
 ```console
-# git, javascript and markdown
+# git, javascript, markdown and package.json
 npm run lint
 
 # git only
@@ -57,21 +57,27 @@ npm run lint:js
 
 # markdown only
 npm run lint:md
+
+# package.json only
+npm run lint:pkg
 ```
 
-### Formatting
+### Fixing
 
-Execute formatters via `npm`.
+Execute automatic fixers via `npm`.
 
 ```console
-# javascript and markdown
-npm run format
+# javascript, markdown and package.json
+npm run fix
 
 # javascript only
-npm run format:js
+npm run fix:js
 
 # markdown only
-npm run format:md
+npm run fix:md
+
+# package.json only
+npm run fix:pkg
 ```
 
 ### Building
