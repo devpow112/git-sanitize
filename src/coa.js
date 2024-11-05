@@ -80,7 +80,7 @@ export const execute = async () => {
     console.log('Resetting submodules...');
 
     await submoduleForEach(git, ['reset', '--hard']);
-    await git.subModuleUpdate(['--recursive', '--init']);
+    await git.submoduleUpdate(['--recursive', '--init']);
   }
 
   console.log('Sanitized.');
