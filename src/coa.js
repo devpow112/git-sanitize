@@ -1,5 +1,5 @@
 import { ResetMode, simpleGit } from 'simple-git';
-import isString from 'lodash.isstring';
+import { isString } from 'lodash';
 import { promisify } from 'util';
 import { unlink as unlinkCallback } from 'fs';
 
@@ -27,7 +27,7 @@ const shouldClean = async git => {
 const forceClean = async git => {
   try {
     await git.clean('xdf');
-  } catch (_) {
+  } catch {
     // handles cases on windows where path can be too long to clean
     const files = await getCompleteFileList(git);
 
