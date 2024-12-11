@@ -26,7 +26,7 @@ const shouldClean = async git => {
 
 const forceClean = async git => {
   try {
-    await git.clean('xfdf');
+    await git.clean('fdfx');
   } catch {
     // handles cases on windows where path can be too long to clean
     const files = await getCompleteFileList(git);
@@ -35,7 +35,7 @@ const forceClean = async git => {
       await unlink(file);
     }
   } finally {
-    await git.clean('xfdf');
+    await git.clean('fdfx');
   }
 };
 
