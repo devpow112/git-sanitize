@@ -31,7 +31,7 @@ jobs:
           echo "update-body=$UPDATE_BODY" >> $GITHUB_OUTPUT
       - name: Update .nvmrc
         run: echo '${{steps.info.outputs.version}}' > .nvmrc
-      - name: GEnerate app token
+      - name: Generate app token
         id: app-token
         uses: actions/create-github-app-token@v1.11.0
         with:
