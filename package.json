@@ -60,5 +60,9 @@
   "engines": {
     "node": ">=20"
   },
-  "preferGlobal": true
+  "preferGlobal": true,
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
 }
